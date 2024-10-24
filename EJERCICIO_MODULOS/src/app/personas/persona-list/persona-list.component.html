@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <h2>Bienvenido, {{ username }}</h2>
+  <h3>Lista de Personas</h3>
+
+  <div class="container mt-5">
+    <div class="d-flex justify-content-between">
+      <h2>Bienvenido, {{ username }}</h2>
+      <button class="btn btn-danger" (click)="logout()">Cerrar sesión</button>
+    </div>
+    <h3>Lista de Personas</h3>
+    <!-- El resto de la tabla y formulario permanece igual -->
+  </div>
+
+
+  <!-- Tabla de personas -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Identificación</th>
+        <th>Nombres</th>
+        <th>Edad</th>
+        <th>Email</th>
+        <th>Celular</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let persona of personas">
+        <td>{{ persona.id }}</td>
+        <td>{{ persona.nombres }}</td>
+        <td>{{ persona.edad }}</td>
+        <td>{{ persona.email }}</td>
+        <td>{{ persona.celular || 'No tiene' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulario para agregar una nueva persona -->
+  <app-persona-form (personaAdded)="onPersonaAdded($event)"></app-persona-form>
+</div>
